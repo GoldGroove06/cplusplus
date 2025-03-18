@@ -1,9 +1,25 @@
 "use client"
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ForumCard from '@/components/ForumCard';
 import { motion } from 'framer-motion';
+
+const Navbar = () => {
+  return (
+    <nav className="bg-gradient-to-r from-blue-800 to-blue-900 text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+      <div className="text-2xl font-extrabold tracking-wide">CPlusPlus.com</div>
+      <div className="hidden md:flex space-x-6 text-lg font-medium">
+        <Link href="/tutorials" className="hover:text-gray-300 transition">Tutorials</Link>
+        <Link href="/reference" className="hover:text-gray-300 transition">Reference</Link>
+        <Link href="/articles" className="hover:text-gray-300 transition">Articles</Link>
+        <Link href="/forum" className="hover:text-gray-300 transition">Forum</Link>
+      </div>
+      <div className="md:hidden cursor-pointer text-xl">☰</div>
+      <div className="hidden md:flex space-x-4">
+        <button className="bg-white text-blue-900 px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 transition">Sign Up</button>
+        <button className="border border-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">Log In</button>
+      </div>
+    </nav>
+  );
+};
 
 const forumData = [
   {
@@ -23,38 +39,28 @@ const forumData = [
     date: "Mar 18, 2025",
     time: "9:06 AM",
     replies: 4
-  },
-  {
-    title: "Call of Templated Function w/ Explicit Template Argument Fails to Compile",
-    author: "mbozzi",
-    desc: "Greetings, may I please enquire why compiler reports error for code below as indicated. Thank you kindly...",
-    link: "/forum/thread3",
-    date: "Mar 16, 2025",
-    time: "3:50 AM",
-    replies: 1
-  },
-  {
-    title: "I wrote a cron job!",
-    author: "jonnin",
-    desc: "This is a continuation of Finally switched to Linux Mint. Mint, by default, is constantly popping up...",
-    link: "/forum/thread4",
-    date: "Mar 15, 2025",
-    time: "11:32 PM",
-    replies: 12
-  },
-  {
-    title: "Random Story Time",
-    author: "jonnin",
-    desc: "I once went to McDonalds, waaay back when $5 was expensive, and bought food that totaled something like $6.85...",
-    link: "/forum/thread5",
-    date: "Mar 14, 2025",
-    time: "1:59 PM",
-    replies: 19
   }
 ];
 
+const ForumCard = ({ title, author, desc, link, date, time, replies }) => {
+  return (
+    <motion.div whileHover={{ scale: 1.05 }} className="bg-white p-6 rounded-lg shadow-lg mb-4 transition">
+      <Link href={link} className="text-blue-600 hover:underline text-lg font-bold block mb-2">
+        {title}
+      </Link>
+      <p className="text-gray-500 text-sm">Posted by {author} on {date} at {time} | {replies} replies</p>
+      <p className="text-gray-700 mt-2">{desc.length > 120 ? `${desc.substring(0, 120)}...` : desc}</p>
+    </motion.div>
+  );
+};
 
-
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-white text-center p-6 mt-10 text-sm">
+      &copy; {new Date().getFullYear()} CPlusPlus.com - All Rights Reserved
+    </footer>
+  );
+};
 
 export default function Home() {
   return (
