@@ -38,7 +38,7 @@ export default function CppTutorial() {
       <ul className="list-disc pl-6 mb-4">
         <li><code>#include &lt;iostream&gt;</code>: Includes the standard input-output library.</li>
         <li><code>int main()</code>: The main function where execution starts.</li>
-        <li><code>std::cout &lt;&lt; "Hello World!";</code>: Prints text to the screen.</li>
+        <li><code>std::cout &lt;&lt; {"Hello World!"};</code>: Prints text to the screen.</li>
       </ul>
 
       <h2 className="text-xl font-semibold mt-6 mb-2">Adding More Statements</h2>
