@@ -1,6 +1,5 @@
 "use client"
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ForumCard from '@/components/ForumCard';
 import { motion } from 'framer-motion';
@@ -59,7 +58,6 @@ const forumData = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 font-sans">
-      <Navbar />
       <main className="max-w-6xl mx-auto py-12 px-6">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
           <h1 className="text-3xl font-extrabold text-center mb-8">Explore the C++ Reference</h1>
@@ -90,7 +88,6 @@ export default function Home() {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
